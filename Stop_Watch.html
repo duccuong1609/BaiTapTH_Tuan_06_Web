@@ -26,16 +26,31 @@
             <button class="Button_item" id="Reset" onclick="reset()">Reset</button>
         </div>
     </div>
+    <div id="Watch_log">
+        <div id="title">LỊCH SỬ DỪNG ĐỒNG HỒ</div>
+        <div class="log">1. </div>
+        <div class="log">2. </div>
+        <div class="log">3. </div>
+        <div class="log">4. </div>
+        <div class="log">5. </div>
+        <div class="log">6. </div>
+        <div class="log">7. </div>
+        <div class="log">8. </div>
+        <div class="log">9. </div>
+        <div class="log">10. </div>
+    </div>
     <script>
         let hour = 0;
         let min = 0;
         let sc = 0;
         let ms =0;
         let interval =0;
+        let i=0;
         let dochour = document.getElementById('hour');
         let docmin = document.getElementById('minute');
         let docsc = document.getElementById('second');
         let docms = document.getElementById('milisecond');
+        let log = document.getElementsByClassName('log');
         function increasetime(){
             ms++;
             if(ms <=9){
@@ -79,7 +94,13 @@
             interval = setInterval(increasetime,10);
         }
         function stopincrease(){
+            if(i > 9)
+            {
+                i=0;                
+            }
             clearInterval(interval);
+            log[i].innerHTML = i+1 +". "+ dochour.innerHTML + "h : " + docmin.innerHTML + "m : " + docsc.innerHTML + "s : " + docms.innerHTML +"ms";
+            i++;
         }
         function reset(){
             hour = 0;
@@ -90,6 +111,9 @@
             docmin.innerHTML = "00";
             docms.innerHTML = "00";
             docsc.innerHTML ="00";
+            for(i=0;i<log.length;i++){
+                log[i].innerHTML = i+1 +". ";
+            }
         }
     </script>   
 </body>
