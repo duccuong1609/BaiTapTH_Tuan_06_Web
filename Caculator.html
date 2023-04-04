@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caculator</title>
+    <link rel="stylesheet" href="css/Caculator.css">
+</head>
+<body>
+    <div id="caculator">
+        <div id="screen"></div>
+        <div class="4buttom" id="line1">
+            <button class="button" id="button+" onclick="addscreen('+')">+</button>
+            <button class="button" id="button-" onclick="addscreen('-')">-</button>
+            <button class="button" id="button*" onclick="addscreen('*')">*</button>
+            <button class="button" id="button/" onclick="addscreen('/')">/</button>
+        </div>
+        <div class="4buttom">
+            <button class="button" id="button1" onclick="addscreen(1)">1</button>
+            <button class="button" id="button2" onclick="addscreen(2)">2</button>
+            <button class="button" id="button3" onclick="addscreen(3)">3</button>
+            <button class="button" id="buttondel" onclick="delscreen()">DEL</button>
+        </div>
+        <div class="4buttom">
+            <button class="button" id="button4" onclick="addscreen(4)">4</button>
+            <button class="button" id="button5" onclick="addscreen(5)">5</button>
+            <button class="button" id="button6" onclick="addscreen(6)">6</button>
+            <button class="button" id="buttonac" onclick="clearsreen()">AC</button>
+        </div>
+        <div class="4buttom">
+            <button class="button" id="button7" onclick="addscreen(7)">7</button>
+            <button class="button" id="button8" onclick="addscreen(8)">8</button>
+            <button class="button" id="button9" onclick="addscreen(9)">9</button>
+            <button class="button" id="button/" onclick="addscreen('.')">.</button>
+            
+        </div>
+        <button class="button" id="buttonresult" onclick="returnresult()">=</button>
+    </div>
+    <script>
+        screen = document.getElementById('screen');
+        function addscreen(n){
+            screen.innerHTML +=n;
+        }
+        // xoa toan bo
+        function clearsreen(){
+            screen.innerHTML = "";
+        }
+        // xoa ki tu cuoi
+        function delscreen(){
+            a = screen.innerHTML;
+            screen.innerHTML = a.substring(0,a.length - 1);
+        }
+        function returnresult(){
+            screen.innerHTML = eval(screen.innerHTML);
+        }
+    </script>
+</body>
+</html>
