@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link rel="stylesheet" href="css/Stop_Wath.css">
+</head>
+<body>
+    <div id="Watch_container">
+        <div id="Watch">
+            <div id="Time">
+                <div class="Time_Item" id="hour">00</div>
+                h&nbsp;:&nbsp;
+                <div class="Time_Item" id="minute">00</div>
+                m&nbsp;:&nbsp;
+                <div class="Time_Item" id="second">00</div>
+                s&nbsp;:&nbsp;
+                <div class="Time_Item" id="milisecond">00</div>ms
+            </div>
+        </div>
+        <div id="Button">
+            <button class="Button_item" id="Start" onclick="startincrease()">Start</button>
+            <button class="Button_item" id="Stop" onclick="stopincrease()">Stop</button>
+            <button class="Button_item" id="Reset" onclick="reset()">Reset</button>
+        </div>
+    </div>
+    <script>
+        let hour = 0;
+        let min = 0;
+        let sc = 0;
+        let ms =0;
+        let interval =0;
+        let dochour = document.getElementById('hour');
+        let docmin = document.getElementById('minute');
+        let docsc = document.getElementById('second');
+        let docms = document.getElementById('milisecond');
+        function increasetime(){
+            ms++;
+            if(ms <=9){
+                docms.innerHTML = "0" + ms;
+            }
+            if(ms >9){
+                docms.innerHTML = ms;
+                if(ms >99){
+                    ms=0;
+                    sc++;
+                    if(sc <=9){
+                        docsc.innerHTML = "0" +sc;
+                    }
+                    if(sc >9){
+                        docsc.innerHTML = sc;
+                        if(sc >59){
+                            sc=0;
+                            min++;
+                            if(min <=9){
+                                docmin.innerHTML ="0" +min;
+                            }
+                            if(min>9){
+                                docmin.innerHTML = min;
+                                if(min>59){
+                                    min=0;
+                                    hour++;
+                                    if(hour <=9){
+                                        dochour.innerHTML = "0" +hour;
+                                    }
+                                    if(hour >9){
+                                        dochour.innerHTML = hour;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        function startincrease(){
+            interval = setInterval(increasetime,10);
+        }
+        function stopincrease(){
+            clearInterval(interval);
+        }
+        function reset(){
+            dochour.innerHTML ="00";
+            docmin.innerHTML = "00";
+            docms.innerHTML = "00";
+            docsc.innerHTML = "00";
+        }
+    </script>   
+</body>
+</html>
