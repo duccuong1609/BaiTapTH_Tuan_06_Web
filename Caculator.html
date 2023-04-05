@@ -32,14 +32,26 @@
             <button class="button" id="button7" onclick="addscreen(7)">7</button>
             <button class="button" id="button8" onclick="addscreen(8)">8</button>
             <button class="button" id="button9" onclick="addscreen(9)">9</button>
-            <button class="button" id="button/" onclick="addscreen('.')">.</button>
+            <button class="button" id="button/" onclick="addscreendot('.')">.</button>
             
         </div>
-        <button class="button" id="buttonresult" onclick="returnresult()">=</button>
+        <div class="4buttom">
+            <button class="button" id="button0" onclick="addscreen(0)">0</button>
+            <button class="button" id="buttonresult" onclick="returnresult()">=</button>
+        </div>
+        
     </div>
     <script>
         screen = document.getElementById('screen');
         function addscreen(n){
+            //neu nhap so thi xoa bo so 0
+            if(screen.innerHTML =="0"){
+                screen.innerHTML ="";
+            }
+            screen.innerHTML +=n;
+        }
+        function addscreendot(n){
+            //nhap dau '.' khong xoa 0
             screen.innerHTML +=n;
         }
         // xoa toan bo
@@ -53,6 +65,11 @@
         }
         function returnresult(){
             screen.innerHTML = eval(screen.innerHTML);
+            //doi undefined thanh 0
+            if(screen.innerHTML =="undefined")
+            {
+                screen.innerHTML = "0";
+            }
         }
     </script>
 </body>

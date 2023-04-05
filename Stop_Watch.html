@@ -100,6 +100,18 @@
             }
             clearInterval(interval);
             log[i].innerHTML = i+1 +". "+ dochour.innerHTML + "h : " + docmin.innerHTML + "m : " + docsc.innerHTML + "s : " + docms.innerHTML +"ms";
+            // moi lan dung, chi dung 1 lan
+            if(i>0)
+            {
+                tempprev = log[i-1].innerHTML;
+                tempprev= tempprev.substr(2,tempprev.length)
+                tempcurrent = log[i].innerHTML;
+                tempcurrent = tempcurrent.substr(2,tempcurrent.length);
+                if(tempprev == tempcurrent){
+                    log[i].innerHTML = i+1+". ";
+                    i--;
+                }
+            }
             i++;
         }
         function reset(){
